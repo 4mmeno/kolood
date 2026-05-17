@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imane&Amine 💖</title>
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ffd6e8,#ffeef6,#fff);
+text-align:center;
+overflow-x:hidden;
+}
+
+/* SECRET PAGE */
+.secret{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ffc0cb,#ffe6f0);
+padding:20px;
+}
+
+.secret-box{
+background:rgba(255,255,255,0.4);
+padding:35px;
+border-radius:25px;
+backdrop-filter:blur(10px);
+box-shadow:0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* SECRET IMAGE */
+.secret-img{
+width:120px;
+height:120px;
+object-fit:cover;
+border-radius:50%;
+margin:20px 0;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+.secret input{
+padding:12px;
+width:220px;
+border:none;
+border-radius:20px;
+outline:none;
+margin-top:15px;
+text-align:center;
+}
+
+/* BUTTON */
+.btn{
+padding:14px 30px;
+border:none;
+border-radius:30px;
+background:#ff6fa5;
+color:white;
+cursor:pointer;
+margin-top:15px;
+font-size:16px;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.08);
+}
+
+/* INTRO */
+.intro{
+display:none;
+height:100vh;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ffc0cb,#ffe6f0);
+padding:20px;
+}
+
+.intro h1{
+font-size:3rem;
+margin-bottom:10px;
+}
+
+.intro p{
+font-size:1.2rem;
+margin-bottom:25px;
+}
+
+/* MAIN */
+.main{
+display:none;
+padding:60px 20px;
+}
+
+.card{
+margin:auto;
+max-width:700px;
+padding:30px;
+border-radius:25px;
+background:rgba(255,255,255,0.35);
+backdrop-filter:blur(15px);
+box-shadow:0 8px 32px rgba(0,0,0,0.2);
+}
+
+/* PHOTOS */
+.photo-container{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.photo-frame{
+border:5px solid gold;
+border-radius:18px;
+padding:5px;
+background:#fff0f5;
+transition:0.3s;
+position:relative;
+overflow:hidden;
+}
+
+.photo-frame img{
+width:180px;
+height:180px;
+object-fit:cover;
+border-radius:12px;
+}
+
+/* TEXT ON FIRST IMAGE */
+.photo-text{
+position:absolute;
+bottom:10px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(0,0,0,0.5);
+color:white;
+padding:6px 12px;
+border-radius:12px;
+font-size:14px;
+font-weight:bold;
+}
+
+.photo-frame:hover{
+transform:scale(1.05);
+}
+
+/* ENVELOPE */
+.scene{
+perspective:1200px;
+margin-top:35px;
+}
+
+.envelope{
+width:260px;
+height:170px;
+margin:auto;
+position:relative;
+transform-style:preserve-3d;
+cursor:pointer;
+}
+
+.envelope-body{
+width:100%;
+height:100%;
+background:#ff6fa5;
+border-radius:12px;
+position:absolute;
+}
+
+.envelope-flap{
+position:absolute;
+top:0;
+left:0;
+width:0;
+height:0;
+border-left:130px solid transparent;
+border-right:130px solid transparent;
+border-bottom:90px solid #ff8fb9;
+transform-origin:top;
+transition:0.7s;
+}
+
+.envelope.open .envelope-flap{
+transform:rotateX(180deg);
+}
+
+.letter{
+position:absolute;
+left:15px;
+bottom:10px;
+width:230px;
+background:white;
+padding:18px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+transform:translateY(90px);
+transition:0.7s;
+opacity:0;
+font-size:13px;
+}
+
+.envelope.open .letter{
+transform:translateY(-145px);
+opacity:1;
+}
+
+/* MEMORY */
+.memory{
+margin-top:35px;
+padding:20px;
+background:#ffe0ef;
+border-radius:15px;
+}
+
+/* SECOND PAGE */
+.second-page{
+display:none;
+padding:60px 20px;
+}
+
+.second-page h1{
+margin-bottom:20px;
+}
+
+.second-text{
+margin:20px auto;
+max-width:500px;
+font-size:18px;
+color:#555;
+line-height:1.7;
+}
+
+.second-img{
+width:90%;
+max-width:450px;
+border-radius:20px;
+box-shadow:0 8px 25px rgba(0,0,0,0.2);
+transition:0.3s;
+}
+
+.second-img:hover{
+transform:scale(1.05);
+}
+
+/* MUSIC */
+.music-btn{
+position:fixed;
+top:20px;
+right:20px;
+background:white;
+border-radius:50%;
+width:60px;
+height:60px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+font-size:22px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+z-index:999;
+}
+
+/* HEARTS */
+.float-heart{
+position:fixed;
+bottom:-50px;
+font-size:20px;
+animation:floatUp 6s linear infinite;
+pointer-events:none;
+}
+
+@keyframes floatUp{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-110vh);
+opacity:0;
+}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+.intro h1{
+font-size:2rem;
+}
+
+.photo-frame img{
+width:140px;
+height:140px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SECRET PAGE -->
+<section class="secret" id="secret">
+
+<div class="secret-box">
+
+<h1>Enter Secret Code 💕</h1>
+
+<img src="iimane.1.jpeg" class="secret-img">
+
+<input type="password" id="codeInput" placeholder="Secret code">
+
+<br>
+
+<button class="btn" onclick="checkCode()">Open Surprise 🎁</button>
+
+<p id="error" style="color:red; margin-top:10px;"></p>
+
+</div>
+
+</section>
+
+<!-- INTRO -->
+<section class="intro" id="intro">
+
+<h1>Imane & Amine 💖</h1>
+
+<p>We made something special just for you 🤍</p>
+
+<button class="btn" onclick="openMain()">
+Open Your Surprise 🎁
+</button>
+
+</section>
+
+<!-- MAIN -->
+<section class="main" id="main">
+
+<div class="card">
+
+<!-- PHOTOS -->
+<div class="photo-container">
+
+<!-- FIRST PHOTO -->
+<div class="photo-frame">
+
+<img src="awalohom.jpeg">
+
+<div class="photo-text">
+Awel tswira lina 💖<br>
+23\12 ✨
+</div>
+
+</div>
+
+<!-- SECOND PHOTO -->
+<div class="photo-frame">
+<img src="tanihom.jpeg">
+</div>
+
+<!-- THIRD PHOTO -->
+<div class="photo-frame">
+<img src="talitohom.jpeg">
+</div>
+
+</div>
+
+<!-- ENVELOPE -->
+<div class="scene">
+
+<div class="envelope" onclick="openEnvelope(this)">
+
+<div class="envelope-body"></div>
+
+<div class="envelope-flap"></div>
+
+<div class="letter">
+
+Its crazy to think of how little time 
+weve actually been best friends it feels like Ive known you since I was little and that youve always been in my life Ive never been closer to anyone Ive told you everything I trust you like no one else So thank you for being my best friend Thank you for being in my life Thank you for loving me and spending time with me Thank you for listening to my countless hours of ranting and complaining Thank you for the memories and the laughs Thank you for being so kind and understanding Thank you for telling me what I need to hear   Thank you for being my person I couldnt have asked for a more amazing human to be my best friend and Im so thankful you are in my life and Remember that Im always here if you need a shoulder to lay onto happy birthday my love I love you more and more than u know ❤️<br><br>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MEMORY -->
+<div class="memory">
+
+<h3>Our Story Began On 💫</h3>
+
+<p>23/12/2024</p>
+
+</div>
+
+<br>
+
+<button class="btn" onclick="openSecondPage()">
+Special Page 💕
+</button>
+
+</div>
+
+</section>
+
+<!-- SECOND PAGE -->
+<section class="second-page" id="secondPage">
+
+<h1>Haki diplom dylk 💖</h1>
+
+<p class="second-text">
+Love u 💕
+</p>
+
+<img src="KIKI" class="second-img">
+
+<br><br>
+
+<button class="btn" onclick="goBack()">
+Back 🔙
+</button>
+
+</section>
+
+<!-- MUSIC -->
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
+
+<audio id="music" loop>
+<source src="Dave Tems Raindance Lyrics(1).mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+/* SECRET CODE */
+function checkCode(){
+
+let code=document.getElementById("codeInput").value;
+
+if(code==="ROU7I"){
+
+document.getElementById("secret").style.display="none";
+
+document.getElementById("intro").style.display="flex";
+
+}else{
+
+document.getElementById("error").innerText="Khouloud mktghltch 😔🙂";
+
+}
+
+}
+
+/* OPEN MAIN */
+function openMain(){
+
+intro.style.display="none";
+
+main.style.display="block";
+
+}
+
+/* ENVELOPE */
+function openEnvelope(el){
+
+el.classList.toggle("open");
+
+}
+
+/* SECOND PAGE */
+function openSecondPage(){
+
+main.style.display="none";
+
+secondPage.style.display="block";
+
+}
+
+/* BACK */
+function goBack(){
+
+secondPage.style.display="none";
+
+main.style.display="block";
+
+}
+
+/* MUSIC */
+let music=document.getElementById("music");
+
+let playing=false;
+
+function toggleMusic(){
+
+if(!playing){
+
+music.play();
+
+playing=true;
+
+}else{
+
+music.pause();
+
+playing=false;
+
+}
+
+}
+
+/* FLOATING HEARTS */
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.className="float-heart";
+
+heart.innerHTML="💖";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(15+Math.random()*20)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),6000);
+
+},500);
+
+</script>
+
+</body>
+</html>
